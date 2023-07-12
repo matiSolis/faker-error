@@ -2,9 +2,10 @@ import ProductManagerMongo from "../Dao/managers/mongo/productManagerMongo.js";
 import { EError } from "../enums/EError.js";
 import { generateErrorParam } from "../services/errorParam.js";
 import { generateProductErrorInfo } from "../services/errorInfo.js";
-
+import CustomError from "../services/customError.service.js";
 const productManagerMongo = new ProductManagerMongo();
 
+const customError = new CustomError();
 export default class ProductController{
     async getProducts (req, res){
         try {
@@ -19,7 +20,7 @@ export default class ProductController{
             const idProduct = req.params.pid;
             const productID = parseInt(idProduct);
             if(Number.isNaN(productID)){
-                CustomError.createError({
+                customError.createError({
                     name: "Product get by id error",
                     cause:generateErrorParam(productID),
                     message:"Error obteniendo el uproducto por el id",
@@ -36,7 +37,7 @@ export default class ProductController{
         try {
             const { title, description, price, category, thumbnail, code, stock} = req.body;
             if (!title || !description || !price || !category || !thumbnail || !code || !stock) {
-                CustomError.createError({
+                customError.createError({
                     name: "Product create error",
                     cause: generateProductErrorInfo(req.body),
                     message: "Error creando el producto.",
@@ -61,15 +62,12 @@ export default class ProductController{
     async deleteProductById (req, res){
         try {
             const idProduct = req.params.pid;
-            const productID = parseInt(idProduct);
-            if(Number.isNaN(productID)){
-                CustomError.createError({
-                    name: "Product get by id error",
-                    cause:generateErrorParam(productID),
-                    message:"Error obteniendo el uproducto por el id",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
+            customError.createError({
+                name: "Product get by id error",
+                cause:generateErrorParam(productID),
+                message:"Error obteniendo el uproducto por el id",
+                errorCode: EError.INVALID_PARAM
+            });
             await productManagerMongo.deleteProductById(idProduct);
             res.status(200).send({ msg: 'Producto eliminado exitosamente' });
         } catch (error) {
@@ -80,17 +78,14 @@ export default class ProductController{
         try {
             const idProduct = req.params.pid;
             const { title, description, price, category, thumbnail, code, stock} = req.body;
-            const productID = parseInt(idProduct);
-            if(Number.isNaN(productID)){
-                CustomError.createError({
-                    name: "Product get by id error",
-                    cause:generateErrorParam(productID),
-                    message:"Error obteniendo el uproducto por el id",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
+            customError.createError({
+                name: "Product get by id error",
+                cause:generateErrorParam(productID),
+                message:"Error obteniendo el uproducto por el id",
+                errorCode: EError.INVALID_PARAM
+            });
             if (!title || !description || !price || !category || !thumbnail || !code || !stock) {
-                CustomError.createError({
+                customError.createError({
                     name: "Product create error",
                     cause: generateProductErrorInfo(req.body),
                     message: "Error creando el producto.",

@@ -8,7 +8,9 @@ import { EError } from '../enums/EError.js';
 import { generateUserErrorInfo } from '../services/errorInfo.js';
 import { generateErrorParam } from '../services/errorParam.js';
 import { generateAuthenticationErrorParam } from '../services/authenticationError.js';
+import CustomError from "../services/customError.service.js";
 
+const customError = new CustomError();
 const LocalStrategy = local.Strategy;
 
 const initializePassport = () => {
@@ -22,7 +24,7 @@ const initializePassport = () => {
                     return done(null, false, { message: 'El usuario ya existe.' });
                 };
                 if(!first_name || !last_name || !email || !age) {
-                    CustomError.createError({
+                    customError.createError({
                         name: "User create error",
                         cause: generateUserErrorInfo(req.body),
                         message: "Error creando el usuario.",
@@ -45,28 +47,22 @@ const initializePassport = () => {
     ));
 
     passport.serializeUser((user, done) => {
-        const userID = parseInt(user._id);
-        if(Number.isNaN(userID)){
-            CustomError.createError({
+            customError.createError({
                 name: "User get by id error",
                 cause:generateErrorParam(user._id),
                 message:"Error obteniendo el usuario por el id.",
                 errorCode: EError.INVALID_PARAM
             });
-        };
             done(null, user._id);
     });
 
     passport.deserializeUser( async (id, done)=>{
-        const userID = parseInt(id);
-        if(Number.isNaN(userID)){
-            CustomError.createError({
+            customError.createError({
                 name: "User get by id error",
                 cause:generateErrorParam(id),
                 message:"Error obteniendo el usuario por el id.",
                 errorCode: EError.INVALID_PARAM
             });
-        };
         const user = await userModel.findById(id);
         done(null, user)
     });
@@ -77,7 +73,7 @@ const initializePassport = () => {
             try {
                 const user = await userModel.findOne({ email: username });
                 if (!user) {{   
-                        CustomError.createError({
+                    customError.createError({
                             name: "Email user auth error.",
                             cause: generateAuthenticationErrorParam(user),
                             message: "Error autenticando el usuario por email.",

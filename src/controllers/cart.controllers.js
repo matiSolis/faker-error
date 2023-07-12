@@ -53,15 +53,12 @@ export default class CartController{
     async getDetailsInCart (req, res) {
         try {
             const idCart = req.params.cid;
-            const cartID = parseInt(idCart);
-            if(Number.isNaN(cartID)){
-                CustomError.createError({
-                    name: "Cart get by id error",
-                    cause:generateErrorParam(cartID),
-                    message:"Error obteniendo el carrito por el id.",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
+            customError.createError({
+                name: "Cart get by id error",
+                cause:generateErrorParam(cartID),
+                message:"Error obteniendo el carrito por el id.",
+                errorCode: EError.INVALID_PARAM
+            });
             const result = await cartManagerMongo.getDetailsInCart(idCart);
             return res.status(200).send({
                 status: "success",
@@ -90,24 +87,18 @@ export default class CartController{
         try {
             const idCart = req.params.cid;
             const idProduct = req.params.pid;
-            const cartID = parseInt(idCart);
-            if(Number.isNaN(cartID)){
-                CustomError.createError({
-                    name: "Cart get by id error",
-                    cause:generateErrorParam(cartID),
-                    message:"Error obteniendo el carrito por el id.",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
-            const productID = parseInt(idProduct);
-            if(Number.isNaN(productID)){
-                CustomError.createError({
-                    name: "Product get by id error",
-                    cause:generateErrorParam(productID),
-                    message:"Error obteniendo el uproducto por el id",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
+            customError.createError({
+                name: "Cart get by id error",
+                cause:generateErrorParam(cartID),
+                message:"Error obteniendo el carrito por el id.",
+                errorCode: EError.INVALID_PARAM
+            });
+            customError.createError({
+                name: "Product get by id error",
+                cause:generateErrorParam(productID),
+                message:"Error obteniendo el uproducto por el id",
+                errorCode: EError.INVALID_PARAM
+            });
             const result = await cartManagerMongo.addProductInCart(idCart, idProduct);
             return res.status(200).send({
                 status: "success",
@@ -123,15 +114,12 @@ export default class CartController{
     async clearCart (req, res) {
         try {
             const idCart = req.params.cid;
-            const cartID = parseInt(idCart);
-            if(Number.isNaN(cartID)){
-                CustomError.createError({
-                    name: "Cart get by id error",
-                    cause:generateErrorParam(cartID),
-                    message:"Error obteniendo el carrito por el id.",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
+            customError.createError({
+                name: "Cart get by id error",
+                cause:generateErrorParam(cartID),
+                message:"Error obteniendo el carrito por el id.",
+                errorCode: EError.INVALID_PARAM
+            });
             const result = await cartManagerMongo.clearCart(idCart);
             res.status(200).send({
                 status: "Success",
@@ -149,27 +137,21 @@ export default class CartController{
             const idCart = req.params.cid;
             const idProduct = req.params.pid;
             const quantity = req.body.quantity;
-            const cartID = parseInt(idCart);
-            if(Number.isNaN(cartID)){
-                CustomError.createError({
-                    name: "Cart get by id error",
-                    cause:generateErrorParam(cartID),
-                    message:"Error obteniendo el carrito por el id.",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
-            const productID = parseInt(idProduct);
-            if(Number.isNaN(productID)){
-                CustomError.createError({
-                    name: "Product get by id error",
-                    cause:generateErrorParam(productID),
-                    message:"Error obteniendo el uproducto por el id",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
+            customError.createError({
+                name: "Cart get by id error",
+                cause:generateErrorParam(cartID),
+                message:"Error obteniendo el carrito por el id.",
+                errorCode: EError.INVALID_PARAM
+            });
+            customError.createError({
+                name: "Product get by id error",
+                cause:generateErrorParam(productID),
+                message:"Error obteniendo el uproducto por el id",
+                errorCode: EError.INVALID_PARAM
+            });
             const quantityNumb = parseInt(quantity);
             if(Number.isNaN(quantityNumb)){
-                CustomError.createError({
+                customError.createError({
                     name: "Qantity error",
                     cause:generateQuantityErrorInfo(quantityNumb),
                     message:"Error obteniendo la cantidad solicitada.",
@@ -192,15 +174,12 @@ export default class CartController{
         try {
             const idCart = req.params.cid;
             const products = req.body;
-            const cartID = parseInt(idCart);
-            if(Number.isNaN(cartID)){
-                CustomError.createError({
-                    name: "Cart get by id error",
-                    cause:generateErrorParam(cartID),
-                    message:"Error obteniendo el carrito por el id.",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
+            customError.createError({
+                name: "Cart get by id error",
+                cause:generateErrorParam(cartID),
+                message:"Error obteniendo el carrito por el id.",
+                errorCode: EError.INVALID_PARAM
+            });
             const result = await cartManagerMongo.addProductsToCart(idCart, products);
             res.status(200).send({
                 status: 'success',
@@ -216,15 +195,12 @@ export default class CartController{
     async purchaseCart (req, res) {
         try {
             const idCart = req.params.cid;
-            const cartID = parseInt(idCart);
-            if(Number.isNaN(cartID)){
-                CustomError.createError({
-                    name: "Cart get by id error",
-                    cause:generateErrorParam(cartID),
-                    message:"Error obteniendo el carrito por el id.",
-                    errorCode: EError.INVALID_PARAM
-                });
-            };
+            customError.createError({
+                name: "Cart get by id error",
+                cause:generateErrorParam(cartID),
+                message:"Error obteniendo el carrito por el id.",
+                errorCode: EError.INVALID_PARAM
+            });
             const result = await ticketManagerMongo.purchaseCart(idCart);
             res.status(200).send({
                 status: 'success',
