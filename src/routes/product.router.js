@@ -1,9 +1,10 @@
 import { Router } from "express";
 import ProductController from "../controllers/product.controllers.js";
 
+
 const router = Router();
 const productController = new ProductController();
-
+router.post('/mockingproducts', productController.generateProductsFaker);
 router.get('/', productController.getProducts);
 router.get('/:pid', productController.getProductById);
 router.post('/', productController.addProduct);

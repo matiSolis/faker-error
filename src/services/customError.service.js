@@ -5,5 +5,5 @@ export default class CustomError{
         error.code =errorCode;
         console.log("error", error.cause)
         throw error;
-    }
-}
+    };
+};

@@ -3,6 +3,8 @@ import { EError } from "../enums/EError.js";
 import { generateErrorParam } from "../services/errorParam.js";
 import { generateProductErrorInfo } from "../services/errorInfo.js";
 import CustomError from "../services/customError.service.js";
+import { generateProductFaker } from "../helpers/faker.js";
+
 const productManagerMongo = new ProductManagerMongo();
 
 const customError = new CustomError();
@@ -106,5 +108,18 @@ export default class ProductController{
             } catch (error) {
                 res.status(500).send({ error: 'Error interno del servidor' });
             };
+    };
+    async generateProductsFaker(req, res) {
+        try {
+            const cant = parseInt(req.query.cant) || 100;
+            let products = [];
+            for(let i=0; i< cant; i++) {
+                const product = generateProductFaker()
+                products.push(product);
+            };
+            res.json({products});
+        } catch (error) {
+            throw new Error(error);
+        };
     };
 };

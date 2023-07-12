@@ -6,11 +6,11 @@ export const generateUserErrorInfo = (user) =>{
     last_name: Debe ser un campo string, pero se recibio ${user.last_name}
     email: Debe ser un campo string, pero se recibio ${user.email}
     age: Debe ser un campo number, pero se recibio ${user.age}
-    `
+    `;
 };
 
 export const generateQuantityErrorInfo = (quantity) =>{
-    return `quantity: Debe ser un campo number, pero se recibio ${quantity}`
+    return `quantity: Debe ser un campo number, pero se recibio ${quantity}`;
 };
 
 export const generateProductErrorInfo = (product) =>{
@@ -24,5 +24,5 @@ export const generateProductErrorInfo = (product) =>{
     thumbnail: Debe ser un campo string, pero se recibio ${product.category}
     code: Debe ser un campo string, pero se recibio ${product.category}
     stock: Debe ser un campo number, pero se recibio ${product.category}
-    `
+    `;
 };
