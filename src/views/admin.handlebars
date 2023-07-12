@@ -1,0 +1,66 @@
+<div>
+        <nav class="navbar navbar-expand-lg bg-body-$green-900" style="width: 100%;">
+        <div class="container-fluid">
+            <a class="navbar-brand">EL EMPORIO DEL JARDIN / BASE DE DATOS </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">CREAR ADMIN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">BASE DE DATOS USUARIOS</a>
+                </li>
+                <li>
+                    <p>{{user.role}}</p>
+                </li>
+                <li>
+                    <a href="/api/session/logout"><button>Salir</button></a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search" action="/products" method="get">
+                <input class="form-control me-2" type="text" name="query" placeholder="Buscar producto..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+    </nav>
+    {{#if message}}
+        <div class="alert alert-warning">{{message}}</div>
+    {{/if}}
+    <div class="gallery">
+        {{#each products}}
+            <div class="product">
+                <h2>{{this.title}}</h2>
+                <img src="{{this.thumbnail}}" alt="{{this.title}}">
+                <p>{{this.description}}</p>
+                <p>Category: {{this.category}}</p>
+                <p>Price: {{this.price}}</p>
+                <p>Stock: {{this.stock}}</p>
+                <div>
+                    <button>EDITAR PRODUCTO</button>
+                </div>
+                <br>
+                <div>
+                    <button>ELIMINAR PRODUCTO</button>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    <div>
+        <button>CREAR PRODUCTO</button>
+    </div>
+    <div>
+        {{#if prevPage}}
+            <a href="/products?{{#if urlParams.query}}query={{urlParams.query}}&{{/if}}{{#if urlParams.sort}}sort={{urlParams.sort}}&{{/if}}{{#if urlParams.category}}category={{urlParams.category}}&{{/if}}page={{prevPage}}"><button class="button2">Anterior</button></a>
+        {{/if}}
+        {{#if nextPage}}
+            <a href="/products?{{#if urlParams.query}}query={{urlParams.query}}&{{/if}}{{#if urlParams.sort}}sort={{urlParams.sort}}&{{/if}}{{#if urlParams.category}}category={{urlParams.category}}&{{/if}}page={{nextPage}}"><button class="button2">Siguiente</button></a>
+        {{/if}}
+    </div>
+</div>

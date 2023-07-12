@@ -1,0 +1,51 @@
+<div>
+    <nav class="navbar navbar-expand-lg bg-body-$green-900" style="width: 100%;">
+        <div class="container-fluid">
+            <a class="navbar-brand">EL EMPORIO DEL JARDIN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/products">PRODUCTOS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/chat">CHAT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/carts/{{user.cart}}">CARRITO</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle bg-body-$green-900" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PERFIL</a>
+                        <ul class="dropdown-menu bg-body-$green-900">
+                            <p class="dropdown-item">NOMBRE:  {{user.first_name}}</p>
+                            <p class="dropdown-item">APELLIDO:  {{user.last_name}}</p>
+                            <p class="dropdown-item">EMAIL:  {{user.email}}</p>
+                            <p class="dropdown-item">EDAD:  {{user.age}} </p>
+                            <li><hr class="dropdown-divider"></li>
+                            <a href="/api/session/logout"><button>Salir</button></a>
+                        </ul>
+                </li>
+            </ul>
+            <form class="d-flex" role="search" action="/products" method="get">
+                <input class="form-control me-2" type="text" name="query" placeholder="Buscar producto..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <h2>Chat</h2>
+    </div>
+    <input id="chatbox">
+    <div>
+        <h4 id="messageLogs"></h4>
+    </div>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>

@@ -1,0 +1,61 @@
+<div>
+    <nav class="navbar navbar-expand-lg bg-body-$green-900" style="width: 100%;">
+        <div class="container-fluid">
+            <a class="navbar-brand">EL EMPORIO DEL JARDIN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/products">PRODUCTOS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/chat">CHAT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/carts/{{user.cart}}">CARRITO</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle bg-body-$green-900" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PERFIL</a>
+                        <ul class="dropdown-menu bg-body-$green-900">
+                            <p class="dropdown-item">NOMBRE:  {{user.first_name}}</p>
+                            <p class="dropdown-item">APELLIDO:  {{user.last_name}}</p>
+                            <p class="dropdown-item">EMAIL:  {{user.email}}</p>
+                            <p class="dropdown-item">EDAD:  {{user.age}} </p>
+                            <li><hr class="dropdown-divider"></li>
+                            <a href="/api/session/logout"><button>Salir</button></a>
+                        </ul>
+                </li>
+            </ul>
+            <form class="d-flex" role="search" action="/products" method="get">
+                <input class="form-control me-2" type="text" name="query" placeholder="Buscar producto..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+    </nav>
+    <h1 class="title">BIENVENIDO AL EMPORIO DEL JARDIN</h1>
+    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro nulla culpa pariatur beatae nam at reiciendis corrupti, consectetur atque excepturi? Labore vel nesciunt consequatur sint quos corrupti quasi debitis minima.</h4>
+    {{#if message}}
+        <div class="alert alert-warning">{{message}}</div>
+    {{/if}}
+    <div class="gallery">
+        {{#each products}}
+            <div class="product">
+                <h2>{{this.title}}</h2>
+                <img src="{{this.thumbnail}}" alt="{{this.title}}">
+                <p>{{this.description}}</p>
+                <p>${{this.price}}</p>
+                <p>Stock: {{this.stock}}</p>
+                <button>Agregar al carrito</button>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+
+

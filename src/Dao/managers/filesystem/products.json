@@ -1,0 +1,102 @@
+[
+	{
+		"_id": "PROD1",
+		"title": "Maceta 5lt",
+		"description": "Maceta bolsa soplada 5lt.",
+		"price": 150,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "M5",
+		"stock": 100
+	},
+	{
+		"_id": "PROD2",
+		"title": "Maceta 10lt",
+		"description": "Maceta bolsa soplada 10lt.",
+		"price": 275,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "M10",
+		"stock": 150
+	},
+	{
+		"_id": "PROD3",
+		"title": "Maceta 20lt",
+		"description": "Maceta bolsa soplada 20lt.",
+		"price": 400,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "M20",
+		"stock": 150
+	},
+	{
+		"_id": "PROD4",
+		"title": "Maceta 20lt",
+		"description": "Maceta plastica 20lt.",
+		"price": 600,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "MP20",
+		"stock": 200
+	},
+	{
+		"_id": "PROD5",
+		"title": "Bolson tierra negra 20lt",
+		"description": "Bolson de 20lt tierra negra seleccionada para canteros.",
+		"price": 600,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "TN20",
+		"stock": 30
+	},
+	{
+		"_id": "PROD6",
+		"title": "Bolson tierra para macetas 10lt",
+		"description": "Bolson de 10lt tierra preparada para macetas.",
+		"price": 350,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "TM10",
+		"stock": 30
+	},
+	{
+		"_id": "PROD7",
+		"title": "Bolson tierra para macetas 20lt",
+		"description": "Bolson de 20lt tierra preparada para macetas.",
+		"price": 600,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "TM20",
+		"stock": 30
+	},
+	{
+		"_id": "PROD8",
+		"title": "Pala",
+		"description": "Pala para jardineria 25cm.",
+		"price": 700,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "P25",
+		"stock": 10
+	},
+	{
+		"_id": "PROD9",
+		"title": "Saca yuyos",
+		"description": "Saca yuyos metalico.",
+		"price": 1300,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "SY1",
+		"stock": 10
+	},
+	{
+		"_id": "PROD10",
+		"title": "Fertilizante 1lt",
+		"description": "Fertilizante 1lt, humus de lombriz",
+		"price": 800,
+		"thumbnail": "foto.jpg",
+		"status": true,
+		"code": "FH1",
+		"stock": 15
+	}
+]

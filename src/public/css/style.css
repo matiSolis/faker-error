@@ -1,0 +1,175 @@
+* {margin: 0;
+    box-sizing: content-box;
+}
+/*header*/
+.navbar{
+    background-color: #046225;
+}
+
+footer{
+    background-color: #14a407;
+    margin-top: 100px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+}
+
+/*body*/
+body {
+    background-color: rgb(26, 24, 24);
+    color   : #14a407;
+    text-align: center;
+}
+
+    
+    .gallery {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    }
+    
+    .product {
+    border-radius: 20px;
+    width: 20vh;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: rgb(65, 65, 65);
+    }
+    
+    .product img {
+    max-width: 100%;
+    margin-bottom: 10px;
+    }
+
+    p{
+    font-weight: bold;
+    
+    }
+
+    input{
+    padding: 8px;
+    border-radius: 7px;
+    }
+
+    button {
+    cursor: pointer;
+    background-color: #14a407;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    color: white;
+    }
+
+    button:hover{
+    background-color: #046225;
+    }
+.button2{
+    cursor: pointer;
+    background-color: #14a407;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    color: rgb(0, 0, 0);
+    }
+    .button2:hover{
+    background-color:#046225;
+    }
+    .title {
+    margin-top: 20px;
+    }
+
+.galeria{
+    display: flex;
+    width: 100%;
+
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+
+
+.fondo {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Estilos para el título del chat */
+.titulo {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la sección de galería */
+.galleria {
+    height: 200px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el cuadro de entrada de texto del chat */
+.chatbox {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+/* Estilos para el registro de mensajes del chat */
+#messageLogs {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ffffff;
+}
+.parra{
+    font-size: 20px;
+    color: #14a407;
+}
+
+.alert {
+    margin-top: 20px;
+    font-size: 30px;
+
+}
+.formulario{
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.fondofoto{
+    position: relative;
+}
+
+/* .navName{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 600px;
+} */
