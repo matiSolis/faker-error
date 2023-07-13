@@ -1,13 +1,12 @@
 import CartManagerMongo from "../Dao/managers/mongo/cartManagerMongo.js";
 import TicketManagerMongo from "../Dao/managers/mongo/ticketManagerMongo.js";
 import { EError } from "../enums/EError.js";
-import { generateErrorParam } from "../services/errorParam.js";
-import { generateQuantityErrorInfo } from "../services/errorInfo.js";
-import CustomError from "../services/customError.service.js";
+import { generateErrorParam } from "../services/error/errorParam.js";
+import { generateQuantityErrorInfo } from "../services/error/errorInfo.js";
+import CustomError from "../services/error/errorConstructor/customError.service.js";
 
 const cartManagerMongo = new CartManagerMongo();
 const ticketManagerMongo = new TicketManagerMongo();
-const customError = new CustomError();
 
 export default class CartController{
     async getAllCarts (req, res) {
@@ -29,7 +28,7 @@ export default class CartController{
             const idCart = req.params.cid;
             const result = await cartManagerMongo.getCartById(idCart);
             if(!result){
-                customError.createError({
+                CustomError.createError({
                     name: "Cart get by id error",
                     cause:generateErrorParam(idCart),
                     message:"Error obteniendo el carrito por el id.",
@@ -43,11 +42,27 @@ export default class CartController{
                 result
             });
         }catch (error) {
-            res.status(400).send({
-                status: "Error",
-                msg: `El carrito solicitado no se puede visualizar.`
-                //muestra este error, y no el que genero yo.
-            });
+            //ASI LO TENIA:
+
+            // res.status(400).send({
+            //     status: "Error",
+            //     msg: `El carrito solicitado no se puede visualizar.`
+            //     //muestra este error, y no el que genero yo.
+            // });
+
+            //ASI ME DIJISTE QUE LO PONGA Y TAMPOCO FUNCIONA:
+            //res.status(error.code).send({ status:"error", message: error.message})
+            
+            //ASI ES LA UNICA MANERA QUE ME FUNCIONO (borrando todo el error del try)
+            //PERO ME TIRA UN ERROR RARO POR CONSOLA EN EL ARCHIVO "customError.service.js" :
+            
+            // const idCart = req.params.cid;
+            // return CustomError.createError({
+            //     name: "Cart get by id error",
+            //     cause:generateErrorParam(idCart),
+            //     message:"Error obteniendo el carrito por el id.",
+            //     errorCode: EError.INVALID_PARAM
+            // });
         };
     };
     async getDetailsInCart (req, res) {

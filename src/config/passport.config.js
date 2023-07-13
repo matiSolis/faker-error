@@ -5,10 +5,10 @@ import { validatePassword } from '../utils.js';
 import { contactService } from "../repository/index.js";
 import userModel from '../Dao/models/user.model.js';
 import { EError } from '../enums/EError.js';
-import { generateUserErrorInfo } from '../services/errorInfo.js';
-import { generateErrorParam } from '../services/errorParam.js';
-import { generateAuthenticationErrorParam } from '../services/authenticationError.js';
-import CustomError from "../services/customError.service.js";
+import { generateUserErrorInfo } from '../services/error/errorInfo.js';
+import { generateErrorParam } from '../services/error/errorParam.js';
+import { generateAuthenticationErrorParam } from '../services/error/authenticationError.js';
+import CustomError from "../services/error/errorConstructor/customError.service.js";
 
 const customError = new CustomError();
 const LocalStrategy = local.Strategy;

@@ -4,4 +4,5 @@ export const EError = {
     INVALID_JSON: 3, //JSON es invalido en una peticion
     AUTH_ERROR: 4, //error de autenticacion
     INVALID_PARAM: 5, //Error de parametros de la ruta
+    RENDER_ERROR: 6, //Error de renderizado
 };

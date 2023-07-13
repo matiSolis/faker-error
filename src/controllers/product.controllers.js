@@ -1,8 +1,8 @@
 import ProductManagerMongo from "../Dao/managers/mongo/productManagerMongo.js";
 import { EError } from "../enums/EError.js";
-import { generateErrorParam } from "../services/errorParam.js";
-import { generateProductErrorInfo } from "../services/errorInfo.js";
-import CustomError from "../services/customError.service.js";
+import { generateErrorParam } from "../services/error/errorParam.js";
+import { generateProductErrorInfo } from "../services/error/errorInfo.js";
+import CustomError from "../services/error/errorConstructor/customError.service.js";
 import { generateProductFaker } from "../helpers/faker.js";
 
 const productManagerMongo = new ProductManagerMongo();
